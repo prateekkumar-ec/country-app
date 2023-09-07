@@ -1,0 +1,33 @@
+.header-outer {
+    display: flex;
+    justify-content: center;
+    padding: 1.5rem 0rem;
+    box-shadow: 0 7px 10px 1px hsl(0, 2%, 90%);
+}
+.dark-header-outer {
+    background: hsl(209, 23%, 22%);
+    color: white;
+    box-shadow: 0 7px 10px 1px hsl(207, 26%, 17%);
+}
+.header {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header h2 {
+    font-size: 2rem;
+    font-weight: 600;
+}
+.mode-selector {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.mode-selector .mode-name {
+    font-weight: 600;
+}
+.dark-mode-img {
+    filter: invert(1);
+}

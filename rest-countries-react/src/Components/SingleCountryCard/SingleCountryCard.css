@@ -1,0 +1,43 @@
+.single-card {
+    margin-top: 3rem;
+    flex-basis: 21%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    border-radius: 8px;
+}
+.dark-single-card {
+    background: hsl(209, 23%, 22%);
+    color: white;
+}
+.country-info {
+    padding: 1rem 0.6rem 2.5rem 0.4rem;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+.country-info h2 {
+    padding: 1.5rem 0rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+.country-info li {
+    display: flex;
+    gap: 0.4rem;
+}
+.country-info .heading {
+    font-weight: 600;
+}
+.country-img {
+    width: 100%;
+    height: 21vh;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+@media (max-width: 375px) {
+    .single-card {
+        flex-basis: 80%;
+    }
+}
