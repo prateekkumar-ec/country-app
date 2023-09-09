@@ -54,3 +54,29 @@
 .dark-search::placeholder {
     color: white;
 }
+
+@media (max-width: 400px) {
+    .search-filter-outer {
+        margin-top: 0.5rem;
+    }
+    .search-filter {
+        flex-wrap: wrap;
+    }
+    .search {
+        flex-basis: 100%;
+        margin-top: 0.5rem;
+        padding: 1rem, 1.5rem;
+    }
+    .search::placeholder {
+        font-size: 0.9rem;
+        background: url("../../assets/search-log.svg") no-repeat;
+        background-size: 15px 15px;
+        position: relative;
+        left: 1rem;
+    }
+    .filter {
+        margin-top: 0.5rem;
+        font-size: 1rem;
+        padding: 1rem;
+    }
+}
