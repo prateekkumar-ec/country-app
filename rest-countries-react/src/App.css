@@ -2,106 +2,27 @@
     background: hsl(0, 0%, 98%);
     color: hsl(200, 15%, 8%);
     width: 100%;
+    height: 100vh;
 }
 .dark-container {
     background: hsl(207, 26%, 17%);
-}
-/* filter and search ============================= */
-
-.search-filter-outer {
-    margin-top: 5rem;
-    display: flex;
-    justify-content: center;
-}
-.search-filter {
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-/* filter-outer======================== */
-.filter-option-outer {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-}
-.filter-option-outer ul {
-    position: absolute;
-    top: 15.5rem;
-    padding: 1.2rem 2rem;
-    background: white;
-    border-radius: 8px;
-    min-width: 14rem;
-}
-li {
-    list-style: none;
-}
-.dark-options {
-    background: hsl(209, 23%, 22%) !important;
-    color: white;
-}
-/* filter =============== */
-.filter {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 2.5rem;
-    padding: 1.5rem 2rem;
-    background: white;
-
-    border-radius: 7px;
-    cursor: pointer;
-}
-.dark-filter {
-    background: hsl(209, 23%, 22%);
-    color: white;
-}
-.filter-name,
-.options li {
-    font-weight: 550;
-}
-.filter .dark-filterIcon {
-    filter: invert(1);
-    transition: 0.4s;
-}
-.display-filterIcon {
-    transition: 0.4s;
-    transform: rotate(-90deg);
-}
-
-/* search==================== */
-.search {
-    flex-basis: 37%;
-    border: none;
-    padding: 1.5rem 2rem;
-    border-radius: 7px;
-}
-.dark-search {
-    background: hsl(209, 23%, 22%);
-}
-.dark-search:valid {
-    color: white;
-}
-.search::placeholder {
-    font-size: 1rem;
-    background: url("./assets/search-log.svg") no-repeat;
-    position: relative;
-    left: 1rem;
-}
-.dark-search::placeholder {
-    color: white;
 }
 
 /* countries ================================ */
 .countries-outer {
     display: flex;
     justify-content: center;
+    overflow-y: scroll;
+    height: 75%;
+}
+.countries-outer::-webkit-scrollbar {
+    display: none;
 }
 .countries {
     width: 90%;
     display: flex;
-    justify-content: space-between;
-    gap: 1rem;
+    justify-content: flex-start;
+    gap: 5.2%;
     flex-wrap: wrap;
 }
 
@@ -141,5 +62,5 @@ li {
 }
 
 .noDisplay {
-    display: none;
+    display: none !important;
 }

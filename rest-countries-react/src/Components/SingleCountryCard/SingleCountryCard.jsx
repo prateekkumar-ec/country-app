@@ -1,6 +1,6 @@
 import "./SingleCountryCard.css";
 
-function SingleCountryCard({ mode, imgSrc, name, population, region, capital }) {
+function SingleCountryCard({ subRegion, mode, imgSrc, name, population, region, capital, area }) {
     return (
         <div className={"single-card" + " " + mode + "-" + "single-card"}>
             <img className={"country-img"} src={imgSrc}></img>
@@ -18,6 +18,14 @@ function SingleCountryCard({ mode, imgSrc, name, population, region, capital }) 
                     <li className="capital">
                         <span className="heading"> Capital:</span>
                         <span className="value">{capital}</span>
+                    </li>
+                    <li className="subregion">
+                        <span className="heading"> Subregion:</span>
+                        <span className="value">{subRegion}</span>
+                    </li>
+                    <li className="area">
+                        <span className="heading"> Area:</span>
+                        <span className="value">{area}</span>
                     </li>
                 </ul>
             </div>

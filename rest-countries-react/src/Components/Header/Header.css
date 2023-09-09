@@ -1,8 +1,10 @@
 .header-outer {
+    /* position: fixed; */
     display: flex;
     justify-content: center;
     padding: 1.5rem 0rem;
     box-shadow: 0 7px 10px 1px hsl(0, 2%, 90%);
+    /* width: 100%;  */
 }
 .dark-header-outer {
     background: hsl(209, 23%, 22%);
