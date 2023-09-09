@@ -63,125 +63,73 @@ function SearchFilter({
                     placeholder="      Search for a country..."
                 ></input>
                 {selectedSorting ? (
-                    <div
-                        onClick={() => {
-                            showItem(sortMethodDisplay, setSortMethodDisplay);
+                    <select
+                        className={"filter" + " " + mode + "-" + "filter"}
+                        onChange={(event) => {
+                            if (event.target.value == "none") {
+                                setSelectedSortMethod("");
+                            } else {
+                                setSelectedSortMethod(event.target.value);
+                            }
                         }}
-                        className={"filter-option-outer"}
                     >
-                        <div className={"filter" + " " + mode + "-" + "filter"}>
-                            <p className={"filter-name"}>{selectedSortMethod}</p>
-                            <img className={mode + "-" + "filterIcon" + " " + sortMethodDisplay + "-" + "filterIcon"} src={filterIcon}></img>
-                        </div>
-                        <ul className={sortMethodDisplay + " " + "options" + " " + mode + "-" + "options"}>
-                            {sortMethodList.map((sortMethod) => {
-                                return (
-                                    <li
-                                        onClick={() => {
-                                            setSelectedSortMethod(sortMethod);
-                                        }}
-                                    >
-                                        {sortMethod}
-                                    </li>
-                                );
-                            })}
-                        </ul>
-                    </div>
+                        <option value="Asc">Asc</option>
+                        <option value="Dsc">Dsc</option>
+                    </select>
                 ) : null}
 
-                <div
-                    onClick={() => {
-                        showItem(sortingDisplay, setSortingDisplay);
+                <select
+                    className={"filter" + " " + mode + "-" + "filter"}
+                    onChange={(event) => {
+                        if (event.target.value == "none") {
+                            setSelectedSorting("");
+                        } else {
+                            setSelectedSorting(event.target.value);
+                        }
                     }}
-                    className={"filter-option-outer"}
                 >
-                    <div className={"filter" + " " + mode + "-" + "filter"}>
-                        <p className={"filter-name"}>{selectedSorting ? selectedSorting : "Sort"}</p>
-                        <img className={mode + "-" + "filterIcon" + " " + sortingDisplay + "-" + "filterIcon"} src={filterIcon}></img>
-                    </div>
-                    <ul className={sortingDisplay + " " + "options" + " " + mode + "-" + "options"}>
-                        <li
-                            onClick={() => {
-                                setSelectedSorting("");
-                            }}
-                        >
-                            None
-                        </li>
-                        {sortingList.map((sorting) => {
-                            return (
-                                <li
-                                    onClick={() => {
-                                        setSelectedSorting(sorting);
-                                    }}
-                                >
-                                    {sorting}
-                                </li>
-                            );
-                        })}
-                    </ul>
-                </div>
-                <div
-                    onClick={() => {
-                        showItem(subRegionDisplay, setSubRegionDisplay);
+                    <option value="none" selected>
+                        Sort by - None
+                    </option>
+                    <option value="Sort by area">Area</option>
+                    <option value="Sort by population">Population</option>
+                </select>
+
+                <select
+                    className={"filter" + " " + mode + "-" + "filter"}
+                    onChange={(event) => {
+                        if (event.target.value == "none") {
+                            setSelectedSubRegion("");
+                        } else {
+                            setSelectedSubRegion(event.target.value);
+                        }
                     }}
-                    className={"filter-option-outer"}
                 >
-                    <div className={"filter" + " " + mode + "-" + "filter"}>
-                        <p className={"filter-name"}>{selectedSubRegion ? selectedSubRegion : "Filter by subregion"}</p>
-                        <img className={mode + "-" + "filterIcon" + " " + subRegionDisplay + "-" + "filterIcon"} src={filterIcon}></img>
-                    </div>
-                    <ul className={subRegionDisplay + " " + "options" + " " + mode + "-" + "options"}>
-                        <li
-                            onClick={() => {
-                                setSelectedSubRegion("");
-                            }}
-                        >
-                            None
-                        </li>
-                        {subRegions.map((subRegion) => {
-                            return (
-                                <li
-                                    onClick={() => {
-                                        setSelectedSubRegion(subRegion);
-                                    }}
-                                >
-                                    {subRegion}
-                                </li>
-                            );
-                        })}
-                    </ul>
-                </div>
-                <div
-                    onClick={() => {
-                        showItem(regionDisplay, setRegionDisplay);
+                    <option value="none" selected>
+                        Sort by region
+                    </option>
+                    {subRegions.map((subRegion) => {
+                        return <option value={subRegion}>{subRegion}</option>;
+                    })}
+                </select>
+
+                <select
+                    className={"filter" + " " + mode + "-" + "filter"}
+                    onChange={(event) => {
+                        if (event.target.value == "none") {
+                            setSelectedRegion("");
+                        } else {
+                            setSelectedRegion(event.target.value);
+                        }
                     }}
-                    className={"filter-option-outer"}
                 >
-                    <div className={"filter" + " " + mode + "-" + "filter"}>
-                        <p className={"filter-name"}>{selectedRegion ? selectedRegion : "Filter by region"}</p>
-                        <img className={mode + "-" + "filterIcon" + " " + regionDisplay + "-" + "filterIcon"} src={filterIcon}></img>
-                    </div>
-                    <ul className={regionDisplay + " " + "options" + " " + mode + "-" + "options"}>
-                        <li
-                            onClick={() => {
-                                setSelectedRegion("");
-                            }}
-                        >
-                            None
-                        </li>
-                        {regions.map((region) => {
-                            return (
-                                <li
-                                    onClick={() => {
-                                        setSelectedRegion(() => region);
-                                    }}
-                                >
-                                    {region}
-                                </li>
-                            );
-                        })}
-                    </ul>
-                </div>
+                    <option value="none" selected>
+                        Sort by subregion
+                    </option>
+                    {regions.map((region) => {
+                        return <option value={region}>{region}</option>;
+                    })}
+                </select>
             </div>
         </div>
     );
