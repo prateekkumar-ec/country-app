@@ -25,6 +25,14 @@
     gap: 5.2%;
     flex-wrap: wrap;
 }
+.error {
+    margin-top: 3rem;
+    font-size: 2rem;
+    font-weight: 600;
+}
+.dark-error {
+    color: white;
+}
 
 /* mobile================================= */
 @media (max-width: 375px) {

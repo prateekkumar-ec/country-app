@@ -2,16 +2,24 @@ import { useEffect, useState } from "react";
 import filterIcon from "../../assets/filter-logo.svg";
 import "./SearchFilter.css";
 
-function SearchFilter({ mode, regions, allCountries, setCountries }) {
+function SearchFilter({
+    setSearchedItem,
+    setSelectedRegion,
+    setSelectedSortMethod,
+    setSelectedSorting,
+    setSelectedSubRegion,
+    selectedRegion,
+    selectedSortMethod,
+    selectedSubRegion,
+    selectedSorting,
+    mode,
+    regions,
+    allCountries,
+}) {
     const [subRegionDisplay, setSubRegionDisplay] = useState("noDisplay");
     const [regionDisplay, setRegionDisplay] = useState("noDisplay");
     const [sortingDisplay, setSortingDisplay] = useState("noDisplay");
     const [sortMethodDisplay, setSortMethodDisplay] = useState("noDisplay");
-    const [selectedRegion, setSelectedRegion] = useState("");
-    const [selectedSorting, setSelectedSorting] = useState("");
-    const [selectedSortMethod, setSelectedSortMethod] = useState("Asc");
-    const [searchedItem, setSearchedItem] = useState("");
-    const [selectedSubRegion, setSelectedSubRegion] = useState("");
 
     const [subRegions, setSubRegions] = useState([]);
 
@@ -39,55 +47,6 @@ function SearchFilter({ mode, regions, allCountries, setCountries }) {
         }
     }
 
-    function filter() {
-        setCountries(() => {
-            let new_countries = allCountries.filter((country) => {
-                if (country.subregion != undefined) {
-                    if (
-                        country.name.common.toLowerCase().includes(searchedItem.toLowerCase()) &&
-                        country.region.toLocaleLowerCase().includes(selectedRegion.toLocaleLowerCase()) &&
-                        country.subregion.toLowerCase().includes(selectedSubRegion.toLocaleLowerCase())
-                    ) {
-                        return true;
-                    } else {
-                        return false;
-                    }
-                } else if (
-                    country.name.common.toLowerCase().includes(searchedItem.toLowerCase()) &&
-                    country.region.toLocaleLowerCase().includes(selectedRegion.toLocaleLowerCase())
-                ) {
-                    return true;
-                } else {
-                    return false;
-                }
-            });
-            if (selectedSorting == "Sort by population") {
-                if (selectedSortMethod == "Asc") {
-                    new_countries.sort((a, b) => {
-                        return a.population - b.population;
-                    });
-                } else {
-                    new_countries.sort((a, b) => {
-                        return b.population - a.population;
-                    });
-                }
-            } else if (selectedSorting == "Sort by area") {
-                if (selectedSortMethod == "Asc") {
-                    new_countries.sort((a, b) => {
-                        return a.area - b.area;
-                    });
-                } else {
-                    new_countries.sort((a, b) => {
-                        return b.area - a.area;
-                    });
-                }
-            }
-            return new_countries;
-        });
-    }
-    useEffect(() => {
-        filter();
-    }, [searchedItem, selectedRegion, selectedSubRegion, selectedSorting, selectedSortMethod]);
     useEffect(() => {
         getSubRegionsList();
     }, [selectedRegion]);
