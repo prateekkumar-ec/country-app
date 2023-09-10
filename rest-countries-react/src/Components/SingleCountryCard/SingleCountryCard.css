@@ -37,8 +37,10 @@
     border-top-right-radius: 8px;
 }
 
-@media (max-width: 375px) {
+@media (max-width: 450px) {
     .single-card {
         flex-basis: 80%;
+        margin-top: 1rem;
+        max-height: unset;
     }
 }
