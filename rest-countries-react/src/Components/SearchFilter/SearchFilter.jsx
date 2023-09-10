@@ -90,24 +90,25 @@ function SearchFilter({
                             <option value="Sort by area">Area</option>
                             <option value="Sort by population">Population</option>
                         </select>
-
-                        <select
-                            className={"filter" + " " + mode + "-" + "filter"}
-                            onChange={(event) => {
-                                if (event.target.value == "none") {
-                                    setSelectedSubRegion("");
-                                } else {
-                                    setSelectedSubRegion(event.target.value);
-                                }
-                            }}
-                        >
-                            <option value="none" selected>
-                                Sort by subregion
-                            </option>
-                            {subRegions.map((subRegion) => {
-                                return <option value={subRegion}>{subRegion}</option>;
-                            })}
-                        </select>
+                        {selectedRegion ? (
+                            <select
+                                className={"filter" + " " + mode + "-" + "filter"}
+                                onChange={(event) => {
+                                    if (event.target.value == "none") {
+                                        setSelectedSubRegion("");
+                                    } else {
+                                        setSelectedSubRegion(event.target.value);
+                                    }
+                                }}
+                            >
+                                <option value="none" selected>
+                                    Sort by subregion
+                                </option>
+                                {subRegions.map((subRegion) => {
+                                    return <option value={subRegion}>{subRegion}</option>;
+                                })}
+                            </select>
+                        ) : null}
 
                         <select
                             className={"filter" + " " + mode + "-" + "filter"}
