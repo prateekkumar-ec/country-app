@@ -102,7 +102,7 @@ function SearchFilter({
                             }}
                         >
                             <option value="none" selected>
-                                Sort by region
+                                Sort by subregion
                             </option>
                             {subRegions.map((subRegion) => {
                                 return <option value={subRegion}>{subRegion}</option>;
@@ -120,7 +120,7 @@ function SearchFilter({
                             }}
                         >
                             <option value="none" selected>
-                                Sort by subregion
+                                Sort by region
                             </option>
                             {regions.map((region) => {
                                 return <option value={region}>{region}</option>;
