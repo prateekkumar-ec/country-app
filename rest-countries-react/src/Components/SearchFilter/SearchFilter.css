@@ -30,6 +30,9 @@
     font-size: 1rem;
     font-weight: 500;
 }
+.filter:focus {
+    outline: none;
+}
 .dark-filter {
     background: hsl(209, 23%, 22%);
     color: white;
