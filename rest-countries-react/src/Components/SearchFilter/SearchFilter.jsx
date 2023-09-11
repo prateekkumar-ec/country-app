@@ -9,9 +9,9 @@ function SearchFilter({
     setSelectedSorting,
     setSelectedSubRegion,
     selectedRegion,
-    selectedSortMethod,
-    selectedSubRegion,
+
     selectedSorting,
+    selectedSubRegion,
     mode,
     regions,
     allCountries,
@@ -29,13 +29,6 @@ function SearchFilter({
             }
         }
         setSubRegions(() => Array.from(new_sub_regions));
-    }
-    function showItem(item, setItem) {
-        if (item == "noDisplay") {
-            setItem("display");
-        } else {
-            setItem("noDisplay");
-        }
     }
 
     useEffect(() => {
@@ -65,6 +58,7 @@ function SearchFilter({
                                     if (event.target.value == "none") {
                                         setSelectedSortMethod("");
                                     } else {
+                                        setSelectedSubRegion("");
                                         setSelectedSortMethod(event.target.value);
                                     }
                                 }}
@@ -101,11 +95,15 @@ function SearchFilter({
                                     }
                                 }}
                             >
-                                <option value="none" selected>
+                                <option selected={selectedSubRegion == ""} value="none">
                                     Sort by subregion
                                 </option>
                                 {subRegions.map((subRegion) => {
-                                    return <option value={subRegion}>{subRegion}</option>;
+                                    return (
+                                        <option selected={selectedSubRegion == subRegion} value={subRegion}>
+                                            {subRegion}
+                                        </option>
+                                    );
                                 })}
                             </select>
                         ) : null}
@@ -116,7 +114,8 @@ function SearchFilter({
                                 if (event.target.value == "none") {
                                     setSelectedRegion("");
                                 } else {
-                                    setSelectedRegion(event.target.value);
+                                    setSelectedRegion(() => event.target.value);
+                                    setSelectedSubRegion(() => "");
                                 }
                             }}
                         >
