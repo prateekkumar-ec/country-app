@@ -19,7 +19,7 @@ function Header(props) {
                     }}
                 >
                     <img className={"mode-img" + " " + props.modeType + "-" + "mode-img"} src={ModeIcon}></img>
-                    <p className={"mode-name"}>Dard Mode</p>
+                    <p className={"mode-name"}>Dark Mode</p>
                 </div>
             </div>
         </div>

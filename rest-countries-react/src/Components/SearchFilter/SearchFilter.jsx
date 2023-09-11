@@ -9,7 +9,6 @@ function SearchFilter({
     setSelectedSorting,
     setSelectedSubRegion,
     selectedRegion,
-
     selectedSorting,
     selectedSubRegion,
     mode,
