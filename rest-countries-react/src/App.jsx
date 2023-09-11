@@ -21,7 +21,11 @@ function App() {
     function getData() {
         fetch("https://restcountries.com/v3.1/all")
             .then((res) => {
-                return res.json();
+                if (res.ok) {
+                    return res.json();
+                } else {
+                    throw new Error("Failed to fetch the resources");
+                }
             })
             .then((data) => {
                 setAllCountries(data);
@@ -30,6 +34,7 @@ function App() {
             })
             .catch((error) => {
                 setIsError(error.name);
+                console.log(error.name);
             });
     }
     function getRegionsList(data) {
