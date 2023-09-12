@@ -4,11 +4,12 @@ import Header from "./Components/Header/Header";
 import SearchFilter from "./Components/SearchFilter/SearchFilter";
 import SingleCountryCard from "./Components/SingleCountryCard/SingleCountryCard";
 import Loder from "./Components/Loder/Loader";
+import { useContext } from "react";
+import { ThemeContext } from "./Components/ThemeContext";
 
 function App() {
     const [allCountries, setAllCountries] = useState([]);
     const [regions, setRegions] = useState([]);
-    const [mode, setMode] = useState("dark");
     const [selectedRegion, setSelectedRegion] = useState("");
     const [selectedSorting, setSelectedSorting] = useState("");
     const [selectedSortMethod, setSelectedSortMethod] = useState("Asc");
@@ -17,6 +18,9 @@ function App() {
 
     const [isError, setIsError] = useState("");
     const [isLoaded, setIsLoaded] = useState(false);
+
+    const [mode, setMode] = useState("dark");
+    const theme = useContext(ThemeContext);
 
     function getData() {
         fetch("https://restcountries.com/v3.1/all")
@@ -89,54 +93,54 @@ function App() {
     }, []);
 
     return (
-        <div className={"container" + " " + mode + "-" + "container"}>
-            <Header modeType={mode} setMode={setMode} />
-            <SearchFilter
-                setSearchedItem={setSearchedItem}
-                setSelectedRegion={setSelectedRegion}
-                setSelectedSubRegion={setSelectedSubRegion}
-                setSelectedSorting={setSelectedSorting}
-                setSelectedSortMethod={setSelectedSortMethod}
-                searchedItem={searchedItem}
-                selectedRegion={selectedRegion}
-                selectedSorting={selectedSorting}
-                selectedSortMethod={selectedSortMethod}
-                selectedSubRegion={selectedSubRegion}
-                mode={mode}
-                allCountries={allCountries}
-                regions={regions}
-            />
-            <div className={"countries-outer"}>
-                {isError ? (
-                    <div className={"error" + " " + mode + "-" + "error"}>
-                        <p>Failed to load the resourses.</p>
-                    </div>
-                ) : isLoaded ? (
-                    filtered_data.length != 0 ? (
-                        <div className={"countries"}>
-                            {filtered_data.map((country) => {
-                                return (
-                                    <SingleCountryCard
-                                        mode={mode}
-                                        imgSrc={country.flags.svg}
-                                        name={country.name.common}
-                                        population={country.population}
-                                        region={country.region}
-                                        capital={country.capital}
-                                        subRegion={country.subregion}
-                                        area={country.area}
-                                    />
-                                );
-                            })}
+        <ThemeContext.Provider value={mode}>
+            <div className={"container" + " " + mode + "-" + "container"}>
+                <Header setMode={setMode} />
+                <SearchFilter
+                    setSearchedItem={setSearchedItem}
+                    setSelectedRegion={setSelectedRegion}
+                    setSelectedSubRegion={setSelectedSubRegion}
+                    setSelectedSorting={setSelectedSorting}
+                    setSelectedSortMethod={setSelectedSortMethod}
+                    searchedItem={searchedItem}
+                    selectedRegion={selectedRegion}
+                    selectedSorting={selectedSorting}
+                    selectedSortMethod={selectedSortMethod}
+                    selectedSubRegion={selectedSubRegion}
+                    allCountries={allCountries}
+                    regions={regions}
+                />
+                <div className={"countries-outer"}>
+                    {isError ? (
+                        <div className={"error" + " " + mode + "-" + "error"}>
+                            <p>Failed to load the resourses.</p>
                         </div>
+                    ) : isLoaded ? (
+                        filtered_data.length != 0 ? (
+                            <div className={"countries"}>
+                                {filtered_data.map((country) => {
+                                    return (
+                                        <SingleCountryCard
+                                            imgSrc={country.flags.svg}
+                                            name={country.name.common}
+                                            population={country.population}
+                                            region={country.region}
+                                            capital={country.capital}
+                                            subRegion={country.subregion}
+                                            area={country.area}
+                                        />
+                                    );
+                                })}
+                            </div>
+                        ) : (
+                            <div className={"error" + " " + mode + "-" + "error"}>No such countries exists</div>
+                        )
                     ) : (
-                        <div className={"error" + " " + mode + "-" + "error"}>No such countries exists</div>
-                    )
-                ) : (
-                    <Loder />
-                )}
+                        <Loder />
+                    )}
+                </div>
             </div>
-        </div>
+        </ThemeContext.Provider>
     );
 }
 

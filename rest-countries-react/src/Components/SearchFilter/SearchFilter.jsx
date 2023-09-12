@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import SearchIcon from "../../assets/search-log.svg";
+import { useContext } from "react";
 import "./SearchFilter.css";
+import { ThemeContext } from "../ThemeContext";
 
 function SearchFilter({
     setSearchedItem,
@@ -11,10 +13,11 @@ function SearchFilter({
     selectedRegion,
     selectedSorting,
     selectedSubRegion,
-    mode,
     regions,
     allCountries,
 }) {
+    const theme = useContext(ThemeContext);
+
     const [subRegions, setSubRegions] = useState([]);
     function getSubRegionsList() {
         if (selectedRegion == "") {
@@ -37,14 +40,14 @@ function SearchFilter({
     return (
         <div className={"search-filter-outer"}>
             <div className={"search-filter"}>
-                <div className={"search-outer" + " " + mode + "-" + "search-outer"}>
+                <div className={"search-outer" + " " + theme + "-" + "search-outer"}>
                     <img src={SearchIcon}></img>
                     <input
                         onKeyUp={(event) => {
                             setSearchedItem(() => event.target.value);
                         }}
                         type="text"
-                        className={"search" + " " + mode + "-" + "search"}
+                        className={"search" + " " + theme + "-" + "search"}
                         placeholder="Search for a country..."
                     ></input>
                 </div>
@@ -52,7 +55,7 @@ function SearchFilter({
                     <div className={"filter-inside"}>
                         {selectedSorting ? (
                             <select
-                                className={"filter" + " " + mode + "-" + "filter"}
+                                className={"filter" + " " + theme + "-" + "filter"}
                                 onChange={(event) => {
                                     if (event.target.value == "none") {
                                         setSelectedSortMethod("");
@@ -68,7 +71,7 @@ function SearchFilter({
                         ) : null}
 
                         <select
-                            className={"filter" + " " + mode + "-" + "filter"}
+                            className={"filter" + " " + theme + "-" + "filter"}
                             onChange={(event) => {
                                 if (event.target.value == "none") {
                                     setSelectedSorting("");
@@ -85,7 +88,7 @@ function SearchFilter({
                         </select>
                         {selectedRegion ? (
                             <select
-                                className={"filter" + " " + mode + "-" + "filter"}
+                                className={"filter" + " " + theme + "-" + "filter"}
                                 onChange={(event) => {
                                     if (event.target.value == "none") {
                                         setSelectedSubRegion("");
@@ -108,7 +111,7 @@ function SearchFilter({
                         ) : null}
 
                         <select
-                            className={"filter" + " " + mode + "-" + "filter"}
+                            className={"filter" + " " + theme + "-" + "filter"}
                             onChange={(event) => {
                                 if (event.target.value == "none") {
                                     setSelectedRegion("");

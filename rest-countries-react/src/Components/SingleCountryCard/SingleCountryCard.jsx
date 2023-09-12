@@ -1,8 +1,12 @@
+import { useContext } from "react";
 import "./SingleCountryCard.css";
+import { ThemeContext } from "../ThemeContext";
 
-function SingleCountryCard({ subRegion, mode, imgSrc, name, population, region, capital, area }) {
+function SingleCountryCard({ subRegion, imgSrc, name, population, region, capital, area }) {
+    const theme = useContext(ThemeContext);
+
     return (
-        <div className={"single-card" + " " + mode + "-" + "single-card"}>
+        <div className={"single-card" + " " + theme + "-" + "single-card"}>
             <img className={"country-img"} src={imgSrc}></img>
             <div className={"country-info"}>
                 <h2 className={"country-name"}>{name}</h2>
