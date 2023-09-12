@@ -2,6 +2,7 @@ import { useContext } from "react";
 import ModeIcon from "../../assets/dark-mode-6682.svg";
 import "./Header.css";
 import { ThemeContext } from "../ThemeContext";
+import { BrowserRouter, Link } from "react-router-dom";
 function Header(props) {
     const theme = useContext(ThemeContext);
 

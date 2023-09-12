@@ -7,6 +7,7 @@
     background: white;
     border-radius: 8px;
     max-height: 46vh;
+    cursor: pointer;
 }
 .dark-single-card {
     background: hsl(209, 23%, 22%);
@@ -35,6 +36,11 @@
     height: 21vh;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
+}
+a {
+    flex-basis: 21%;
+    text-decoration: none;
+    color: hsl(200, 15%, 8%);
 }
 
 @media (max-width: 450px) {

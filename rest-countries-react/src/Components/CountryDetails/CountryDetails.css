@@ -1,0 +1,98 @@
+.country-page-outer {
+    display: flex;
+
+    justify-content: center;
+    height: 92vh;
+    font-size: 1.1rem;
+}
+.dark-country-page-outer {
+    background: hsl(207, 26%, 17%);
+}
+.country-details-page {
+    margin-top: 7rem;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+.back-button-outer {
+    display: flex;
+}
+.back-button {
+    cursor: pointer;
+    display: flex;
+    gap: 0.8rem;
+    background: white;
+    padding: 0.8rem 3rem;
+    border-radius: 8px;
+    box-shadow: 0px 0px 5px 5px #ececec;
+}
+.dark-back-button {
+    background: hsl(209, 23%, 22%);
+    box-shadow: 0px 0px 3px 6px #1e2b35;
+    color: white;
+}
+.dark-back-button img {
+    filter: invert(1);
+}
+.flag-details {
+    display: flex;
+    gap: 15rem;
+}
+.dark-flag-details {
+    color: white;
+}
+.flag-details img {
+    width: 40%;
+    height: 25rem;
+}
+.details {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+.details h2 {
+    margin-top: 2rem;
+    font-size: 2.5rem;
+    font-weight: 650;
+}
+.extra-details {
+    display: flex;
+    gap: 9rem;
+}
+.left-details,
+.right-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+.left-details div,
+.right-details div {
+    display: flex;
+    gap: 0.5rem;
+}
+.extra-details .heading {
+    font-weight: 600;
+}
+
+.border-info {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.border-info .heading {
+    font-weight: 600;
+}
+.border-countries {
+    display: flex;
+    gap: 0.8rem;
+}
+.border-country-name {
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 5px #ececec;
+    padding: 0.5rem 1.5rem;
+}
+.dark-border-country-name {
+    background: hsl(209, 23%, 22%);
+    box-shadow: 0px 0px 5px 5px #1d2a33;
+}
