@@ -1,5 +1,6 @@
 import { useContext } from "react";
-import ModeIcon from "../../assets/dark-mode-6682.svg";
+import DarkModeIcon from "../../assets/dark-mode-6682.svg";
+import LightModeIcon from "../../assets/light-mode-icon.svg";
 import "./Header.css";
 import { ThemeContext } from "../ThemeContext";
 import { BrowserRouter, Link } from "react-router-dom";
@@ -23,7 +24,7 @@ function Header(props) {
                         changeMode();
                     }}
                 >
-                    <img className={"mode-img" + " " + theme + "-" + "mode-img"} src={ModeIcon}></img>
+                    <img className={"mode-img" + " " + theme + "-" + "mode-img"} src={theme == "dark" ? LightModeIcon : DarkModeIcon}></img>
                     <p className={"mode-name"}>{theme == "dark" ? "Light Mode" : "Dark Mode"}</p>
                 </div>
             </div>

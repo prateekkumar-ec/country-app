@@ -5,13 +5,13 @@ import "./CountryDetails.css";
 import { ThemeContext } from "../ThemeContext";
 import ArrowIcon from "../../assets/left-arrow-svgrepo-com.svg";
 function CountryDetails() {
-    let borderCountries = ["France", "Germany", "Netherlands"];
     let theme = useContext(ThemeContext);
     const [country, setCountry] = useState("");
     const [isLoaded, setIsLoaded] = useState(false);
     const [isError, setIsError] = useState(false);
     const [currencies, setCurrencies] = useState("");
     const [languages, setLanguages] = useState("");
+    const [borderCountries, setBorderCountries] = useState("");
 
     const { id } = useParams();
     useEffect(() => {
@@ -27,7 +27,7 @@ function CountryDetails() {
                 setCountry(() => data[0]);
                 getCurrencies(data[0]);
                 getLanguages(data[0]);
-                console.log();
+                getBorderCountries(data[0]);
                 setIsLoaded(() => true);
             })
             .catch((error) => {
@@ -48,6 +48,9 @@ function CountryDetails() {
         }, "");
         currencies = currencies.slice(2);
         setCurrencies(currencies);
+    }
+    function getBorderCountries(data) {
+        setBorderCountries(() => data.borders);
     }
     return (
         <div className={"country-page-outer " + theme + "-country-page-outer"}>
@@ -93,7 +96,7 @@ function CountryDetails() {
                                 <div className={"right-details"}>
                                     <div>
                                         <p className={"heading"}>Top Level Domain:</p>
-                                        <p className={"value"}>{".be"}</p>
+                                        <p className={"value"}>{country.tld}</p>
                                     </div>
                                     <div>
                                         <p className={"heading"}>Currencies:</p>
@@ -108,13 +111,19 @@ function CountryDetails() {
                             <div className={"border-info"}>
                                 <p className={"heading"}>Border Countries:</p>
                                 <div className={"border-countries"}>
-                                    {borderCountries.map((country) => {
-                                        return (
-                                            <div className={"border-country"}>
-                                                <p className={"border-country-name " + theme + "-border-country-name"}>{country}</p>
-                                            </div>
-                                        );
-                                    })}
+                                    {borderCountries ? (
+                                        borderCountries.map((country) => {
+                                            return (
+                                                <div className={"border-country"}>
+                                                    <p className={"border-country-name " + theme + "-border-country-name"}>{country}</p>
+                                                </div>
+                                            );
+                                        })
+                                    ) : (
+                                        <div className={"border-country"}>
+                                            <p className={"border-country-name " + theme + "-border-country-name"}>{"No Border Countries"}</p>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         </div>
