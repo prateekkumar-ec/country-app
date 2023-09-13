@@ -105,6 +105,7 @@
         justify-content: center;
         height: unset;
         font-size: 1.1rem;
+        padding-bottom: 2rem;
     }
     /* .dark-country-page-outer {
         background: hsl(207, 26%, 17%);
